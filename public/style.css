@@ -2,7 +2,6 @@ body {
   background: url(https://www.pixelstalk.net/wp-content/uploads/2016/07/Animal-Crossing-Images-For-Desktop.png) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
-  overflow: hidden;
 }
 
 .app {
@@ -35,4 +34,23 @@ button {
 button:hover {
   background: red;
   color: white;
+}
+
+.front {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+}
+
+.back {
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+}
+
+.game-board {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
