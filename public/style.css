@@ -20,10 +20,20 @@ body {
   font-weight: bold;
 }
 
+.counter {
+  background-color: rgb(83, 47, 3);
+  border: 2px solid yellow;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: yellow;
+  font-weight: bold;
+}
+
 button {
   background-color: rgb(83, 47, 3);
   border: 2px solid yellow;
   padding: 6px 12px;
+  margin: 10px 30px 0 0;
   border-radius: 4px;
   color: yellow;
   font-weight: bold;
@@ -46,10 +56,11 @@ button:hover {
   width: 125px;
   height: 125px;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .game-board {
-  margin-top: 40px;
+  margin-bottom: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 20px;

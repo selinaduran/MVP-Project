@@ -16,7 +16,7 @@ const App = () => {
       .then(response => {
         const newVillagers = Object.values(response.data);
         setVillagers(newVillagers);
-        const randomSet = getRandomCardSet(newVillagers, 6);
+        const randomSet = getRandomCardSet(newVillagers, 8);
         const newDeck = [...randomSet, ...randomSet]
           .sort(() => Math.random() - 0.5)
           .map((card) => ({ ...card, matched: false }))
@@ -74,6 +74,7 @@ const App = () => {
   return (
     <div className="app">
       <h1 className="game-title">Animal Crossing Memory Match!</h1>
+      <p className="counter">Counter: {counter}</p>
       <div className="game-board">
         {cards.map(card => (
           <Card key={card.id} card={card} handleSelect={handleSelect} flipped={card === selectOne || card === selectTwo || card.matched} disabled={disabled}/>
