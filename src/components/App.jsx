@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card.jsx';
+import Form from './Form.jsx';
 const axios = require('axios');
 const sampleSize = require('lodash.samplesize');
 
@@ -10,6 +11,10 @@ const App = () => {
   const [selectOne, setSelectOne] = useState(null)
   const [selectTwo, setSelectTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     axios.get('https://acnhapi.com/v1/villagers')
@@ -62,8 +67,6 @@ const App = () => {
     }
   }, [selectOne, selectTwo])
 
-  console.log('show my cardssss = ', cards)
-
   const resetTurn = () => {
     setSelectOne(null)
     setSelectTwo(null)
@@ -72,19 +75,24 @@ const App = () => {
   }
 
   return (
-    <div className="app">
-      <h1 className="game-title">Animal Crossing Memory Match!</h1>
-      <p className="counter">Counter: {counter}</p>
-      <div className="game-board">
-        {cards.map(card => (
-          <Card key={card.id} card={card} handleSelect={handleSelect} flipped={card === selectOne || card === selectTwo || card.matched} disabled={disabled}/>
-        ))}
+    <>
+      <div className="app">
+        <h1 className="game-title">Animal Crossing Memory Game!</h1>
+        <p className="counter">Counter: {counter}</p>
+        <div className="game-board">
+          {cards.map(card => (
+            <Card key={card.id} card={card} handleSelect={handleSelect} flipped={card === selectOne || card === selectTwo || card.matched} disabled={disabled} />
+          ))}
+        </div>
+        <div>
+          <button onClick={handleOpen}>Submit Score</button>
+          <button onClick={makeNewGame}>New Game</button>
+        </div>
       </div>
       <div>
-        <button>Submit Score</button>
-        <button onClick={makeNewGame}>New Game</button>
+        <Form open={open} handleClose={handleClose} counter={counter}/>
       </div>
-    </div>
+    </>
   );
 }
 
