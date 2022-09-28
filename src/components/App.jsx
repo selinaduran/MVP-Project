@@ -9,6 +9,7 @@ const App = () => {
   const [counter, setCounter] = useState(0)
   const [selectOne, setSelectOne] = useState(null)
   const [selectTwo, setSelectTwo] = useState(null)
+  const [disabled, setDisabled] = useState(false)
 
   useEffect(() => {
     axios.get('https://acnhapi.com/v1/villagers')
@@ -17,7 +18,8 @@ const App = () => {
         setVillagers(newVillagers);
         const randomSet = getRandomCardSet(newVillagers, 6);
         const newDeck = [...randomSet, ...randomSet]
-          .sort(() => Math.random() - 0.5);
+          .sort(() => Math.random() - 0.5)
+          .map((card) => ({ ...card, matched: false }))
         setCards(newDeck);
         setCounter(0);
       })
@@ -42,20 +44,31 @@ const App = () => {
 
   useEffect(() => {
     if (selectOne && selectTwo) {
+      setDisabled(true)
       if (selectOne.image_uri === selectTwo.image_uri) {
-        console.log('You got a match!');
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if (card.image_uri === selectOne.image_uri) {
+              return {...card, matched: true}
+            } else {
+              return card
+            }
+          })
+        })
         resetTurn()
       } else {
-        console.log('Sorry, try again!')
-        resetTurn()
+        setTimeout(() => resetTurn(), 1000)
       }
     }
   }, [selectOne, selectTwo])
+
+  console.log('show my cardssss = ', cards)
 
   const resetTurn = () => {
     setSelectOne(null)
     setSelectTwo(null)
     setCounter(counter + 1)
+    setDisabled(false)
   }
 
   return (
@@ -63,7 +76,7 @@ const App = () => {
       <h1 className="game-title">Animal Crossing Memory Match!</h1>
       <div className="game-board">
         {cards.map(card => (
-          <Card key={card.id} card={card} handleSelect={handleSelect}/>
+          <Card key={card.id} card={card} handleSelect={handleSelect} flipped={card === selectOne || card === selectTwo || card.matched} disabled={disabled}/>
         ))}
       </div>
       <div>
