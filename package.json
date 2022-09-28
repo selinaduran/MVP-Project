@@ -24,8 +24,10 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "lodash.samplesize": "^4.2.0",
+    "postgres": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

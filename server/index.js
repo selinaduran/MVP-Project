@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const api = require('./api.js');
+const sql = require('./acgame.js');
+const Game = require('./models/Game.js');
 const cors = require('cors');
 
 app.use(express.json());
