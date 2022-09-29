@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card.jsx';
 import Form from './Form.jsx';
+import Scores from './Scores.jsx';
 const axios = require('axios');
 const sampleSize = require('lodash.samplesize');
 
@@ -26,7 +27,10 @@ const App = () => {
         const newVillagers = Object.values(response.data);
         setVillagers(newVillagers);
         const randomSet = getRandomCardSet(newVillagers, 8);
-        const newDeck = [...randomSet, ...randomSet]
+        const randomSetCopy = randomSet.map((el) => {
+          return {...el, id: el.id + "-copy"}
+        })
+        const newDeck = [...randomSet, ...randomSetCopy]
           .sort(() => Math.random() - 0.5)
           .map((card) => ({ ...card, matched: false }))
         setCards(newDeck);
@@ -114,20 +118,27 @@ const App = () => {
   return (
     <>
       <div className="app">
-        <h1 className="game-title">Animal Crossing Memory Game!</h1>
-        <p className="counter">Counter: {counter}</p>
-        <div className="game-board">
-          {cards.map(card => (
-            <Card key={card.id} card={card} handleSelect={handleSelect} flipped={card === selectOne || card === selectTwo || card.matched} disabled={disabled} />
-          ))}
+        <div className="containerOne">
+          <div className="header">
+            <h1 className="game-title">Animal Crossing Memory Game!</h1>
+            <p className="counter">Counter: {counter}</p>
+          </div>
+          <div className="game-board">
+            {cards.map(card => (
+              <Card key={card.id} card={card} handleSelect={handleSelect} flipped={card === selectOne || card === selectTwo || card.matched} disabled={disabled} />
+            ))}
+          </div>
+          <div className="footer">
+            <button onClick={handleOpen}>Submit Score</button>
+            <button onClick={makeNewGame}>New Game</button>
+          </div>
         </div>
-        <div>
-          <button onClick={handleOpen}>Submit Score</button>
-          <button onClick={makeNewGame}>New Game</button>
+        <div className="containerTwo">
+          <Scores scoreBoard={scoreBoard}/>
         </div>
       </div>
       <div>
-        <Form open={open} handleClose={handleClose} counter={counter} scoreSubmit={scoreSubmit} handleNameChange={handleNameChange} name={name}/>
+        <Form open={open} handleClose={handleClose} counter={counter} scoreSubmit={scoreSubmit} handleNameChange={handleNameChange} name={name} />
       </div>
     </>
   );
