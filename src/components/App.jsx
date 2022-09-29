@@ -98,6 +98,13 @@ const App = () => {
     .then(response => {
       setName("")
       setCounter(0)
+      axios.get('http://localhost:3001/getscores')
+        .then(response => {
+          setScoreBoard(response.data);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     })
     .catch(err => {
       console.log(err)
