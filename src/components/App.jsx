@@ -12,6 +12,7 @@ const App = () => {
   const [selectTwo, setSelectTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
   const [name, setName] = useState("")
+  const [scoreBoard, setScoreBoard] = useState([])
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -91,7 +92,6 @@ const App = () => {
 
     axios.post('http://localhost:3001/addscore', newScore)
     .then(response => {
-      console.log("show any back data = ", response)
       setName("")
       setCounter(0)
     })
@@ -99,6 +99,17 @@ const App = () => {
       console.log(err)
     })
   }
+
+  // For scores
+  useEffect(() => {
+    axios.get('http://localhost:3001/getscores')
+      .then(response => {
+        setScoreBoard(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
 
   return (
     <>

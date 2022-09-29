@@ -21,9 +21,19 @@ app.post('/addscore', (req, res) => {
   const newScore = req.body;
   Game.submitScore(newScore)
   .then(response => {
-    res.status(201).send(response.data);
+    res.status(201).send();
   })
   .catch(err => console.log(err));
+})
+
+app.get('/getscores', (req, res) => {
+  Game.retrieveScores()
+  .then(data => {
+    res.status(200).send(data)
+  })
+  .catch(err => {
+    res.status(500).send(err)
+  })
 })
 
 app.listen(3001, () => {
