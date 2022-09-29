@@ -12,7 +12,7 @@ const Form = ({ open, handleClose, counter, scoreSubmit, name, handleNameChange 
     <div>
       <Dialog open={open} onClose={handleClose}>
         <form id="score-form" onSubmit={scoreSubmit}>
-        <DialogTitle>You got a score of {counter}! Submit Your Score!</DialogTitle>
+        <DialogTitle>You got a score of <b className="form-counter">{counter}</b>! Submit Your Score!</DialogTitle>
         <DialogContent>
           <DialogContentText>Your Name (or Nickname)</DialogContentText>
           <TextField
