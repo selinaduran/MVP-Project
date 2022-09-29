@@ -16,6 +16,16 @@ app.get('/v1/villagers', (req, res) => {
   .catch(err => console.log(err))
 })
 
+app.post('/addscore', (req, res) => {
+  console.log("show req body", req.body)
+  const newScore = req.body;
+  Game.submitScore(newScore)
+  .then(response => {
+    res.status(201).send(response.data);
+  })
+  .catch(err => console.log(err));
+})
+
 app.listen(3001, () => {
   console.log('Listening on port 3001');
 })

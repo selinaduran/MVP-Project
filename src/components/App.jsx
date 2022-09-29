@@ -11,10 +11,13 @@ const App = () => {
   const [selectOne, setSelectOne] = useState(null)
   const [selectTwo, setSelectTwo] = useState(null)
   const [disabled, setDisabled] = useState(false)
+  const [name, setName] = useState("")
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // For matching game
 
   useEffect(() => {
     axios.get('https://acnhapi.com/v1/villagers')
@@ -74,6 +77,29 @@ const App = () => {
     setDisabled(false)
   }
 
+  // For form submission
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  }
+
+  const scoreSubmit = (event) => {
+    event.preventDefault();
+    const newScore = {
+      name: name,
+      score: counter
+    }
+
+    axios.post('http://localhost:3001/addscore', newScore)
+    .then(response => {
+      console.log("show any back data = ", response)
+      setName("")
+      setCounter(0)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
   return (
     <>
       <div className="app">
@@ -90,7 +116,7 @@ const App = () => {
         </div>
       </div>
       <div>
-        <Form open={open} handleClose={handleClose} counter={counter}/>
+        <Form open={open} handleClose={handleClose} counter={counter} scoreSubmit={scoreSubmit} handleNameChange={handleNameChange} name={name}/>
       </div>
     </>
   );
