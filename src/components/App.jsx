@@ -127,7 +127,7 @@ const App = () => {
       <div className="app">
         <div className="containerOne">
           <div className="header">
-            <h1 className="game-title">Animal Crossing Memory Game!</h1>
+            <h1 className="game-title"><img className="logo" src="/img/aclogo2.webp" alt="logo"/>Villager Memory Game!</h1>
             <p className="counter">Counter: {counter}</p>
           </div>
           <div className="game-board">

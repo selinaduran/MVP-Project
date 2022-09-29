@@ -29,7 +29,16 @@ body {
   align-items: center;
 }
 
+.logo {
+  width: 70px;
+  height: 50px;
+  margin-right: 9px;
+}
+
 .game-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgb(83, 47, 3);
   border: 2px solid yellow;
   padding: 6px 12px;
@@ -60,6 +69,14 @@ body {
   width: 300px;
   font-size: large;
   text-align: center;
+}
+
+.gyroid-pic {
+  width: 28px;
+  height: 28px;
+  border: 1px solid black;
+  border-radius: 25px;
+  margin: auto;
 }
 
 .score-board-title {
