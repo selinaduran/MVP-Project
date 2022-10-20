@@ -6,8 +6,8 @@ const Scores = ({ scoreBoard }) => {
       <h2 className="score-board-title"><img className="gyroid-pic" src="/img/ac-gyroid.png" alt="gyroid"/>Leaderboard<img className="gyroid-pic" src="/img/ac-gyroid.png" alt="gyroid"/></h2>
       <h3>(Top 10 Scores)</h3>
       <ol>
-        {scoreBoard.map(score => {
-          return <li className="score-name">{score.name}- {score.score}</li>
+        {scoreBoard.map((score, index) => {
+          return <li className="score-name" key={index}>{score.name}- {score.score}</li>
         })}
       </ol>
     </div>

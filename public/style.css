@@ -194,3 +194,39 @@ button:hover {
   color: yellow;
   padding-top: 15px;
 }
+
+.character-name {
+  font-size: 20px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.character-name:hover {
+  color: yellow;
+}
+
+.dialogContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogTitle {
+  text-align: center;
+}
+
+.dialogCharacterName {
+  color: red;
+}
+
+.dialogImageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialogImage {
+  border: 2px solid black;
+  width: 125px;
+  height: 125px;
+  object-fit: cover;
+}
