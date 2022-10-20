@@ -13,14 +13,21 @@ body {
 }
 
 .containerOne {
-  width: 70%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .containerTwo {
-  width: 30%;
+  width: 25%;
+}
+
+.containerThree {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 25%;
 }
 
 .header {
@@ -64,6 +71,18 @@ body {
 }
 
 .score-board {
+  background-color: orange;
+  border: 2px solid yellow;
+  border-radius: 4px;
+  padding: 12px;
+  font-weight: bold;
+  height: 400px;
+  width: 300px;
+  font-size: large;
+  text-align: center;
+}
+
+.villager-board {
   background-color: orange;
   border: 2px solid yellow;
   border-radius: 4px;

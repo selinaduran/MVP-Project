@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from './Card.jsx';
 import Form from './Form.jsx';
 import Scores from './Scores.jsx';
+import Villagers from './Villagers.jsx';
 const axios = require('axios');
 const sampleSize = require('lodash.samplesize');
 
@@ -14,6 +15,7 @@ const App = () => {
   const [disabled, setDisabled] = useState(false)
   const [name, setName] = useState("")
   const [scoreBoard, setScoreBoard] = useState([])
+  const [foundVillagers, setFoundVillagers] = useState([])
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -68,6 +70,10 @@ const App = () => {
             }
           })
         })
+        const newFinding = foundVillagers.slice();
+        newFinding.push(selectOne);
+        setFoundVillagers(newFinding);
+
         resetTurn()
       } else {
         setTimeout(() => resetTurn(), 1000)
@@ -125,6 +131,9 @@ const App = () => {
   return (
     <>
       <div className="app">
+        <div className="containerThree">
+          <Villagers foundVillagers={foundVillagers}/>
+        </div>
         <div className="containerOne">
           <div className="header">
             <h1 className="game-title"><img className="logo" src="/img/aclogo2.webp" alt="logo"/>Villager Memory Game!</h1>
