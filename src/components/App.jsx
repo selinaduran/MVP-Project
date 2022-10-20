@@ -139,6 +139,9 @@ const App = () => {
             <button onClick={handleOpen}>Submit Score</button>
             <button onClick={makeNewGame}>New Game</button>
           </div>
+          <div>
+            <p className="copyright">Animal Crossing: New Horizons is published by Nintendo® All characters and rights belong to them.</p>
+          </div>
         </div>
         <div className="containerTwo">
           <Scores scoreBoard={scoreBoard}/>
