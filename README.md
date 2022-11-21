@@ -9,6 +9,7 @@ With the emphasis on full-stack, this application includes the following:
 1. Frontend: React
 - Users will be given a shuffled memory-match board that consists of ACNH villager cards.
 - Each user will be able to match cards while a counter keeps track of number of attempts.
+- As each villager is matched, users will have the ability to see the villager's character profile to learn more about the villager's personality and characteristics.
 - Once a round is completed, users will be able to submit their score to see if it makes it to the high score board.
 
 2. Server: Express
