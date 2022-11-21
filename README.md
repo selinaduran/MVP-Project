@@ -1,6 +1,4 @@
-# MVP-Project
-
-Animal Crossing Memory Match!
+# MVP-Project: Animal Crossing Memory Match!
 
 This is a MVP (Minimum Viable Product) Project that I completed as a student at Hack Reactor. We had a total of 24 hours to create a full-stack application of our choosing.
 
@@ -16,6 +14,6 @@ With the emphasis on full-stack, this application includes the following:
 - Will help with getting villager cards from outside API.
 - Will also help with obtaining top 10 scores from PostgreSQL database.
 
-## 3. Database: Outside API & PostgreSQL
+## 3. Database: Outside API & [PostgreSQL](https://www.postgresql.org/)
 - ACNH API: This is actually a free external API (http://acnhapi.com/) that will be utilized to provide images of the Animal Crossing villagers and used for making cards.
 - PostgreSQL: Relational database will be used for storing scores users submit upon completing a game round (Will provide top 10 scores).
