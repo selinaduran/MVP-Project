@@ -18,3 +18,14 @@ Users will be given a shuffled memory-match board that consists of ACNH villager
 As each villager is matched, users will have the ability to see the villager's character profile to learn more about the villager's personality and characteristics.
 <img src="./demo/ScoreGif.gif">
 Once a round is completed, users will be able to submit their score to see if it makes it to the high score board.
+
+## Getting Started
+1. Use npm to install the required dependencies.
+```
+npm install
+```
+2. Run the application using:
+```
+npm run dev
+npm run server
+```
